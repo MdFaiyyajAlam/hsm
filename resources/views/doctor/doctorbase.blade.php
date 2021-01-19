@@ -19,11 +19,12 @@
 
             <ul class="navbar-nav ms-auto">
 
-                <li class="nav-item"><a href="{{ route('home') }}" class="btn btn-light btn-sm">Home</a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="btn btn-light btn-sm me-2">Home</a></li>
 
-                <li class="nav-item"><a href="{{ route('applyDoctor') }}" class="btn btn-light btn-sm">Apply Doctor</a></li>
-
-                <li class="nav-item"><a href="" class="btn btn-light btn-sm">Logout</a></li>
+                <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <input type="submit" class="btn btn-dark btn-sm text-white" value="logout">
+                </form>
 
             </ul>
         </div>

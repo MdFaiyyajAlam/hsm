@@ -19,12 +19,12 @@ class CreateDoctorsTable extends Migration
             $table->string('contact');
             $table->string('email');
             $table->string('gender');
+            $table->string('cover');
             $table->string('qualification');
             $table->string('speciality');
-            $table->string('consultant_type');
+            $table->string('category');
             $table->string('experience');
             $table->string('visiting_hour');
-            $table->string('cover');
             $table->string('address');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

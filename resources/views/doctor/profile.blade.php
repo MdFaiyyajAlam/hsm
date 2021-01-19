@@ -37,8 +37,8 @@
                         <td>{{ $doctors->speciality }}</td>
                     </tr>
                     <tr>
-                        <th>Consultant Type</th>
-                        <td>{{ $doctors->consultant_type }}</td>
+                        <th>Category</th>
+                        <td>{{ $doctors->category}}</td>
                     </tr>
                     <tr>
                         <th>experience</th>

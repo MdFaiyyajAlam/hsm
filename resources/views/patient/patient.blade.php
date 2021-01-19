@@ -1,4 +1,4 @@
-@extends('home.homebase')
+@extends('patient.patientbase')
 @section('title')
 
 @endsection
@@ -9,7 +9,9 @@
 
         <div class="col-lg-6 mx-auto">
             <div class="card bg-light">
-                <div class="card-header"></div>
+                <div class="card-header">
+                    <h4>Book Appoinment Now</h4>
+                </div>
                 <div class="card-body">
                     <form action="{{ route('patientBookStore') }}" method="POST">
                         @csrf

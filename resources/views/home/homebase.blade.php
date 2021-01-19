@@ -23,12 +23,23 @@
             </form>
 
             <ul class="navbar-nav ms-auto">
+@auth
 
-                <li class="nav-item"><a href="" class="btn btn-light btn-sm m-2">Home</a></li>
+<li class="nav-item"><a href="" class="btn btn-light btn-sm m-2">Home</a></li>
 
-                <li class="nav-item"><a href="{{ route('doctor_index') }}" class="btn btn-light btn-sm m-2">Doctor</a></li>
+<li class="nav-item"><a href="{{ route('applyDoctor') }}" class="btn btn-light btn-sm m-2"> Apply Doctor</a></li>
+<form action="{{ route('logout') }}" method="post">
+    @csrf
+    <input type="submit" class="btn btn-dark text-white btn-sm m-2" value="Logout">
+</form>
 
 
+@endauth
+@guest
+<li class="nav-item"><a href="{{ route('login') }}" class="btn btn-light btn-sm m-2">Login</a></li>
+
+<li class="nav-item"><a href="{{ route('register') }}" class="btn btn-light btn-sm m-2"> Register</a></li>
+@endguest
 
             </ul>
         </div>

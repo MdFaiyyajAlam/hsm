@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
     //
-    public function profile(){
+    public function drprofile(){
 
         $data['doctors'] = Doctor::where('user_id',Auth::id())->firstOrFail();
         return view('doctor.profile',$data);
     }
 
-    public function doctor_index(){
 
-        $data['doctors'] = Doctor::all();
-        return view('doctor.index',$data);
-    }
+
 
     public function applyDoctor(){
+        if(Doctor::where('user_id',Auth::id())->exists()){
+            return redirect()->route('drprofile');
+        }
         return view('doctor.apply');
     }
 
@@ -32,13 +32,13 @@ class DoctorController extends Controller
             'contact' => 'required',
             'email' => 'required',
             'gender' => 'required',
+            'cover' => 'required|mimes:jpg,png',
             'qualification' => 'required',
             'speciality' => 'required',
-            'consultant_type' => 'required',
+            'category' => 'required',
             'experience' => 'required',
             'visiting_hour' => 'required',
             'address' => 'required',
-            'cover' => 'required|mimes:jpg,png',
         ]);
 
         $filename = time(). "." .$req->cover->extension();
@@ -50,16 +50,16 @@ class DoctorController extends Controller
             'contact' => $req->contact,
             'email' => $req->email,
             'gender' => $req->gender,
+            'cover' => $filename,
             'qualification' => $req->qualification,
             'speciality' => $req->speciality,
-            'consultant_type' => $req->consultant_type,
+            'category' => $req->category,
             'experience' => $req->experience,
             'visiting_hour' => $req->visiting_hour,
             'address' => $req->address,
-            'cover' => $filename,
             'user_id' => Auth::id(),
         ]);
-        return redirect()->back();
+        return redirect()->route('drprofile');
     }
 
 }

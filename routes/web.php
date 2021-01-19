@@ -21,15 +21,16 @@ use Auth;
 
 
 Route::get('/',function () {
-    return view('home.homepage');
-})->name('home');
+    $data['doctors'] = Doctor::all();
+    return view('home.homepage',$data);
+})->name('index');
 
 
 
-Route::get('/applyDoctor',[DoctorController::class,'applyDoctor'])->name('applyDoctor');
-Route::get('/doctor_index',[DoctorController::class,'doctor_index'])->name('doctor_index');
-Route::get('/profile',[DoctorController::class,'profile'])->name('profile');
-Route::post('/applyDoctorStore',[DoctorController::class,'applyDoctorStore'])->name('applyDoctorStore');
+Route::get('/applyDoctor',[DoctorController::class,"applydoctor"])->name('applyDoctor');
+
+Route::get('/drprofile',[DoctorController::class,'drprofile'])->name('drprofile');
+Route::post('/applyDoctorStore',[DoctorController::class,"applyDoctorStore"])->name('applyDoctorStore');
 
 Route::get('/patientBook',[PatientController::class,'patientBook'])->name('patientBook');
 Route::post('/patientBookStore',[PatientController::class,'patientBookStore'])->name('patientBookStore');
@@ -38,6 +39,7 @@ Route::post('/patientBookStore',[PatientController::class,'patientBookStore'])->
 Route::prefix("admin")->group(function(){
     Route::get('/dashboard',[AdminController::class,"dashboard"])->name('admin.dashboard');
     Route::get('/doctor',[AdminController::class,"doctor"])->name('doctor');
+    Route::get('/patients',[AdminController::class,"patient"])->name('patients');
 });
 
 
