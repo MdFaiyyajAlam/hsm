@@ -9,4 +9,10 @@ class Patient extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function users(){
+        return $this->hasOne('App\Models\User','id','user_id');
+    }
+
+
 }

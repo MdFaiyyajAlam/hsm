@@ -9,10 +9,24 @@ class Doctor extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function patients()
-    {
-        return $this->hasMany('App\Models\Patient','id','doctor_id');
+
+    public function getNameAttribute($value){
+        return "Dr. ".$value;
     }
+
+    public function users(){
+        return $this->hasOne('App\Models\User','id','user_id');
+    }
+
+
+    public function getPatients()
+    {
+        return $this->hasMany('App\Models\Patient','doctor_id','id');
+    }
+
+
+
+
 
 
 

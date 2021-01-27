@@ -26,6 +26,8 @@ class CreateDoctorsTable extends Migration
             $table->string('experience');
             $table->string('visiting_hour');
             $table->string('address');
+            $table->string('country');
+            $table->string('fees');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

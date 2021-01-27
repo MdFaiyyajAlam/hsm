@@ -5,24 +5,41 @@
 @endsection
 
 @section('content')
-<div class="container mt-4">
+<div class="container-fluid mt-0">
     <div class="row">
+
+    <h3 class="bg-success lead display-5 text-white text-center p-3">All details of Hospital Management System</h3>
         <div class="col-lg-3">
-            <div class="list-group">
-                <a href="" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
-                <a href="" class="list-group-item list-group-item-action">Doctors</a>
-                <a href="" class="list-group-item list-group-item-action">Patient</a>
+            <div class="list-group bg-light">
+                <a href="{{ route('admin.dashboard') }}" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
+                <a href="{{ route('admin.doctors') }}" class="list-group-item list-group-item-action">Doctors</a>
+                <a href="{{ route('admin.patients') }}" class="list-group-item list-group-item-action">Patient</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input type="submit" class="list-group-item list-group-item-action bg-danger text-white" value="Logout">
+                </form>
             </div>
         </div>
 
         <div class="col-lg-9">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="card bg-danger text-white">
+
+                <img src="{{ asset('health1.jpg') }}" alt="" width="100%" height="300px">
+                <div class="col-lg-6 mt-3">
+                    <div class="card bg-light ">
                         <div class="card-body">
-                            <h4 class="lead">Total Doctors Presnt</h4>
+                            <h3>Total Doctors Presnt</h3>
                             <hr>
-                            <h6>{{ $doctors }}</h6>
+                            <h4>{{ $doctors }}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-3">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="">All Patients:- </h3>
+                            <hr>
+                            <h4>{{ $patients }}</h4>
                         </div>
                     </div>
                 </div>

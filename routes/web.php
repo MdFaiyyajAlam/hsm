@@ -6,7 +6,7 @@ use App\Http\Controllers\DoctorController;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
-use Auth;
+use Illuminate\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ use Auth;
 Route::get('/',function () {
     $data['doctors'] = Doctor::all();
     return view('home.homepage',$data);
-})->name('index');
+})->name('home');
 
 
 
@@ -32,14 +32,17 @@ Route::get('/applyDoctor',[DoctorController::class,"applydoctor"])->name('applyD
 Route::get('/drprofile',[DoctorController::class,'drprofile'])->name('drprofile');
 Route::post('/applyDoctorStore',[DoctorController::class,"applyDoctorStore"])->name('applyDoctorStore');
 
-Route::get('/patientBook',[PatientController::class,'patientBook'])->name('patientBook');
-Route::post('/patientBookStore',[PatientController::class,'patientBookStore'])->name('patientBookStore');
 
+Route::prefix('patient')->group(function(){
+Route::get('/patientBook/{id}',[PatientController::class,'patientBook'])->name('patientBook');
+Route::post('/patientBookStore/{id}',[PatientController::class,'patientBookStore'])->name('patientBookStore');
+Route::get('/patientProfile',[PatientController::class,'patientProfile'])->name('patientProfile');
 
+});
 Route::prefix("admin")->group(function(){
     Route::get('/dashboard',[AdminController::class,"dashboard"])->name('admin.dashboard');
-    Route::get('/doctor',[AdminController::class,"doctor"])->name('doctor');
-    Route::get('/patients',[AdminController::class,"patient"])->name('patients');
+    Route::get('/doctors',[AdminController::class,"doctors"])->name('admin.doctors');
+    Route::get('/patients',[AdminController::class,"patients"])->name('admin.patients');
 });
 
 

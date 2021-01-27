@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->boolean('isAdmin')->default(false);
+            $table->boolean('isDoctor')->default(false);
             $table->timestamps();
         });
     }

@@ -1,17 +1,20 @@
 @extends('doctor.doctorbase')
 
 @section('title')
-
+DoctorProfile
 @endsection
 
 @section('content')
 
-<div class="container mt-3">
+<div class="container-fluid mt-3">
     <div class="row">
 
 
         <div class="col-lg-4">
             <div class="card bg-light">
+                <div class="card-header bg-dark">
+                    <h5 class=" text-white">AIIMS Doctor Profile</h5>
+                </div>
                 <img src="{{ asset('Doctor_dp/'.$doctors->cover) }}" alt="" class="card-img-top rounded-circle">
             <div class="card-body">
                 <h2>{{ $doctors->name }}</h2>
@@ -50,7 +53,7 @@
                     </tr>
                     <tr>
                         <th>Address</th>
-                        <td>{{ $doctors->address }}</td>
+                        <td>{{ $doctors->address }} {{ $doctors->country }}</td>
                     </tr>
                 </table>
             </div>
@@ -64,6 +67,7 @@
 
     <tr>
         <thead>
+            <th>Id</th>
             <th>Name</th>
             <th>Date of Birth</th>
             <th>Contact</th>
@@ -72,14 +76,18 @@
             <th>Address</th>
         </thead>
     </tr>
-    @foreach($doctors->patients as $patient)
+    @foreach($doctors->getPatients as $patient)
     <tr>
-        <td>{{ $patient->name }}</td>
+        <td>{{ $patient->id }}</td>
+        <td>{{ $patient->users->name }}</td>
         <td>{{ $patient->dob }}</td>
         <td>{{ $patient->contact }}</td>
-        <td>{{ $patient->email }}</td>
+        <td>{{ $patient->users->email }}</td>
         <td>{{ $patient->disases }}</td>
         <td>{{ $patient->address }}</td>
+        <td>
+            <a href="" class="btn btn-danger btn-sm">Active</a>
+        </td>
     </tr>
     @endforeach
 </table>

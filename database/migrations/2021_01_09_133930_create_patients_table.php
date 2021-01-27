@@ -18,10 +18,15 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->string('contact');
             $table->string('email');
+            $table->string('gender');
             $table->string('dob');
             $table->string('address');
-            $table->string('disases');
+            $table->string('country');
+            $table->string('disease');
+            $table->string('description');
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('doctor_id')->constrained();
+            $table->string('cover');
             $table->timestamps();
         });
     }

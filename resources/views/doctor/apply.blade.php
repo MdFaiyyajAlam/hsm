@@ -66,8 +66,38 @@ Apply for Doctor
                             <div class="row">
                                 <div class="col">
                                     <label for="">Speciality</label>
-                                    <select name="speciality" class="form-select" value="{{old('speciality')}}">
-                                        <option selected>Speciality</option>
+                                    <input name="speciality" class="form-control" value="{{old('speciality')}}">
+                                        {{-- <option selected>Speciality</option>
+                                        <option>Dermatologist</option>
+                                        <option>Cardiologist</option>
+                                        <option>Gynecologist</option>
+                                        <option>Dentist</option>
+                                        <option>Ophthalmologist</option>
+                                        <option>General Physicians</option>
+                                        <option>Orthopedist</option>
+                                        <option>Hepatologist</option>
+                                        <option>Hematologist</option>
+                                        <option>ENT Specialist</option>
+                                        <option>Neurologist</option>
+                                        <option>Oncologist</option>
+                                        <option>Pediatrician</option>
+                                        <option>Pulmonologist</option>
+                                        <option>Psychiatrist</option>
+                                        <option>Question</option> --}}
+
+                                    <small class="text-danger">{{$errors->first('speciality')}}</small>
+                                </div>
+                                <div class="col">
+                                    <label for="">Category</label>
+                                    <select name="category" class="form-select" value="{{old('category')}}">
+                                        <option selected>Select Category</option>
+                                        <option>Ayuveda</option>
+                                        <option>Surgeons</option>
+                                        <option>General practice</option>
+                                        <option>Homeopath</option>
+                                        <option>Naturopath</option>
+                                        <option>Specialist</option>
+                                        <option>Supper Specialist</option>
                                         <option>Dermatologist</option>
                                         <option>Cardiologist</option>
                                         <option>Gynecologist</option>
@@ -84,19 +114,6 @@ Apply for Doctor
                                         <option>Pulmonologist</option>
                                         <option>Psychiatrist</option>
                                         <option>Question</option>
-                                    </select>
-                                    <small class="text-danger">{{$errors->first('speciality')}}</small>
-                                </div>
-                                <div class="col">
-                                    <label for="">Category</label>
-                                    <select name="category" class="form-select" value="{{old('category')}}">
-                                        <option selected>Select Category</option>
-                                        <option>Ayuveda</option>
-                                        <option>General practice</option>
-                                        <option>Homeopath</option>
-                                        <option>Naturopath</option>
-                                        <option>Specialist</option>
-                                        <option>Supper Specialist</option>
                                     </select>
                                     <small class="text-danger">{{$errors->first('category')}}</small>
                                 </div>
@@ -123,6 +140,18 @@ Apply for Doctor
                             <label for="">Address</label>
                             <textarea rows="5" type="text" name="address" class="form-control" value="{{old('address')}}"></textarea>
                             <small class="text-danger">{{$errors->first('address')}}</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="">Country</label>
+                            <input type="text" name="country" class="form-control" value="{{old('country')}}">
+                            <small class="text-danger">{{$errors->first('country')}}</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="">Fees</label>
+                            <input type="text" name="fees" class="form-control" value="{{old('fees')}}">
+                            <small class="text-danger">{{$errors->first('fees')}}</small>
                         </div>
 
                         <div class="mb-3">

@@ -13,24 +13,23 @@
 
 <body>
     <nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
-        <a href="" class=""><img src="logo.png" alt="" width="75px" height="50px"></a>
+        <a href="" class=""><img src="{{ asset('logo.png') }}" alt="" width="75px" height="50px"></a>
         <div class="container">
             <a href="" class="navbar-brand">All India Institute of Medical Sciences, Delhi Hospital Management</a>
             <ul class="navbar-nav ms-auto">
                 @auth
-                    <li class="nav-item"><a href="" class="nav-link">Apply
-                            patient to join doctors</a></li>
+                 <li class="nav-item"><a href="{{ route('home') }}" class="btn btn-light btn-sm me-2">Home</a></li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <input type="submit" class="btn btn-dark text-white" value="logout">
+                            <input type="submit" class="btn btn-light btn-sm me-2" value="Logout">
                         </form>
                 @endauth
                 @guest
-                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a>
+                    <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-light btn-sm me-2">Login</a>
                     </li>
                     <li class="nav-item"><a href="{{ route('register') }}"
-                            class="nav-link">Register</a></li>
+                            class="btn btn-light btn-sm me-2">Register</a></li>
                 @endguest
 
                 </li>
