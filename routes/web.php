@@ -21,6 +21,7 @@ use Illuminate\Auth;
 
 
 Route::get('/',function () {
+    //$data['doctors'] = Doctor::where('name',$req->search)->orwhere('qualification','LIKE', "%".$req->search."%")->get();
     $data['doctors'] = Doctor::all();
     return view('home.homepage',$data);
 })->name('home');
@@ -43,6 +44,7 @@ Route::prefix("admin")->group(function(){
     Route::get('/dashboard',[AdminController::class,"dashboard"])->name('admin.dashboard');
     Route::get('/doctors',[AdminController::class,"doctors"])->name('admin.doctors');
     Route::get('/patients',[AdminController::class,"patients"])->name('admin.patients');
+    Route::put('/editUser',[AdminController::class,"editUser"])->name('editUser');
 });
 
 

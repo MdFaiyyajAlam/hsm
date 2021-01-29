@@ -20,10 +20,10 @@ class DoctorController extends Controller
         $data['doctor'] = Doctor::where('user_id',Auth::id())->first();
 
         $data['doctors'] = Doctor::where('user_id',Auth::id())->firstOrFail();
-        if(  $data['patients']=Patient::where('user_id','id')->get()){
+        // if(  $data['patients']=Patient::where('user_id','id')->get()){
 
         return view('doctor.profile',$data);
-        }
+        // }
     }
 
 
